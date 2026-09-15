@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ANR Mining Admin</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080b12;
+    color:#fff;
+}
+
+.admin{
+    max-width:1200px;
+    margin:auto;
+    min-height:100vh;
+}
+
+header{
+    height:70px;
+    padding:0 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#10141d;
+    border-bottom:1px solid #222837;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#6c5ce7,#00d2ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:900;
+}
+
+.main{
+    display:flex;
+}
+
+.sidebar{
+    width:230px;
+    min-height:calc(100vh - 70px);
+    background:#0d1119;
+    border-right:1px solid #222837;
+    padding:20px 12px;
+}
+
+.menu{
+    padding:13px;
+    border-radius:10px;
+    color:#9098aa;
+    cursor:pointer;
+    margin-bottom:5px;
+}
+
+.menu:hover,
+.menu.active{
+    background:#191e2c;
+    color:#fff;
+}
+
+.content{
+    flex:1;
+    padding:25px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.card{
+    background:#11151f;
+    border:1px solid #222837;
+    border-radius:17px;
+    padding:20px;
+}
+
+.card small{
+    color:#858c9d;
+}
+
+.card h2{
+    margin-top:10px;
+}
+
+.panel{
+    background:#11151f;
+    border:1px solid #222837;
+    border-radius:18px;
+    padding:22px;
+    margin-top:20px;
+}
+
+.panel h3{
+    margin-bottom:18px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    font-size:12px;
+    color:#8c94a7;
+    margin-bottom:7px;
+}
+
+input,
+select{
+    width:100%;
+    padding:12px;
+    border:1px solid #2a3040;
+    background:#0b0f17;
+    color:#fff;
+    border-radius:10px;
+    outline:none;
+}
+
+button{
+    border:0;
+    padding:12px 18px;
+    border-radius:10px;
+    background:#6657e8;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+.switch{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:12px 0;
+}
+
+.switch input{
+    width:auto;
+}
+
+.danger{
+    background:#d64545;
+}
+
+.success{
+    background:#168f63;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:13px;
+    border-bottom:1px solid #252b38;
+    text-align:left;
+    font-size:13px;
+}
+
+th{
+    color:#8d95a7;
+}
+
+.badge{
+    padding:5px 9px;
+    border-radius:8px;
+    background:#192b25;
+    color:#4de0a5;
+    font-size:11px;
+}
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#fff;
+    color:#111;
+    padding:13px 20px;
+    border-radius:10px;
+    display:none;
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+        width:65px;
+    }
+
+    .menu{
+        font-size:0;
+        text-align:center;
+    }
+
+    .menu:first-letter{
+        font-size:20px;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .row{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:500px){
+
+    .content{
+        padding:15px;
+    }
+
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="admin">
+
+<header>
+
+<div class="brand">
+    <div class="logo">ANR</div>
+    <div>
+        <b>ANR Mining</b><br>
+        <small style="color:#858c9d">Administrator Panel</small>
+    </div>
+</div>
+
+<div>
+    🛡️ Admin
+</div>
+
+</header>
+
+<div class="main">
+
+<aside class="sidebar">
+
+<div class="menu active">📊 Dashboard</div>
+<div class="menu">⛏️ Mining</div>
+<div class="menu">📺 Advertisements</div>
+<div class="menu">🎯 Tasks</div>
+<div class="menu">👥 Referrals</div>
+<div class="menu">👤 Users</div>
+<div class="menu">💰 Withdrawals</div>
+<div class="menu">⚙️ Settings</div>
+
+</aside>
+
+<main class="content">
+
+<h2>Dashboard</h2>
+<br>
+
+<section class="cards">
+
+<div class="card">
+    <small>Total Users</small>
+    <h2>0</h2>
+</div>
+
+<div class="card">
+    <small>Active Today</small>
+    <h2>0</h2>
+</div>
+
+<div class="card">
+    <small>Total ANR Mined</small>
+    <h2 id="totalMined">0</h2>
+</div>
+
+<div class="card">
+    <small>Pending Withdrawals</small>
+    <h2>0</h2>
+</div>
+
+</section>
+
+
+<section class="panel">
+
+<h3>⛏️ Mining Settings</h3>
+
+<div class="row">
+
+<div>
+<label>ANR per Tap</label>
+<input id="tapReward" type="number" value="1">
+</div>
+
+<div>
+<label>Maximum Energy</label>
+<input id="maxEnergy" type="number" value="1000">
+</div>
+
+<div>
+<label>Energy Cost per Tap</label>
+<input id="energyCost" type="number" value="1">
+</div>
+
+<div>
+<label>Energy Recovery / Second</label>
+<input id="recovery" type="number" value="1">
+</div>
+
+</div>
+
+<button onclick="saveMining()">Save Mining Settings</button>
+
+</section>
+
+
+<section class="panel">
+
+<h3>📺 Advertisement Settings</h3>
+
+<div class="switch">
+<input id="monetag" type="checkbox" checked>
+<label>Enable Monetag</label>
+</div>
+
+<div>
+<label>Monetag Zone ID</label>
+<input id="monetagZone" placeholder="Enter Monetag Zone ID">
+</div>
+
+<br>
+
+<div class="switch">
+<input id="gigapub" type="checkbox" checked>
+<label>Enable GigaPub</label>
+</div>
+
+<div>
+<label>GigaPub Configuration ID</label>
+<input id="gigapubZone" placeholder="Enter GigaPub ID">
+</div>
+
+<br>
+
+<div class="row">
+
+<div>
+<label>Reward per Ad</label>
+<input id="adReward" type="number" value="50">
+</div>
+
+<div>
+<label>Daily Ad Limit</label>
+<input id="adLimit" type="number" value="20">
+</div>
+
+</div>
+
+<button onclick="saveAds()">Save Advertisement Settings</button>
+
+</section>
+
+
+<section class="panel">
+
+<h3>👥 Referral Settings</h3>
+
+<div class="row">
+
+<div>
+<label>Level 1 Reward %</label>
+<input id="ref1" type="number" value="5">
+</div>
+
+<div>
+<label>Level 2 Reward %</label>
+<input id="ref2" type="number" value="2">
+</div>
+
+<div>
+<label>Level 3 Reward %</label>
+<input id="ref3" type="number" value="1">
+</div>
+
+<div>
+<label>Direct Referral Bonus</label>
+<input id="refBonus" type="number" value="100">
+</div>
+
+</div>
+
+<button onclick="saveReferral()">Save Referral Settings</button>
+
+</section>
+
+
+<section class="panel">
+
+<h3>💰 Withdrawal Settings</h3>
+
+<div class="row">
+
+<div>
+<label>Minimum Withdrawal</label>
+<input id="minWithdraw" type="number" value="1000">
+</div>
+
+<div>
+<label>Withdrawal Fee %</label>
+<input id="withdrawFee" type="number" value="0">
+</div>
+
+</div>
+
+<div class="switch">
+<input id="bnb" type="checkbox" checked>
+<label>BNB — BEP20</label>
+</div>
+
+<div class="switch">
+<input id="ton" type="checkbox" checked>
+<label>TON</label>
+</div>
+
+<div class="switch">
+<input id="usdt" type="checkbox" checked>
+<label>USDT — BEP20</label>
+</div>
+
+<div class="switch">
+<input id="binance" type="checkbox" checked>
+<label>Binance UID</label>
+</div>
+
+<button onclick="saveWithdraw()">Save Withdrawal Settings</button>
+
+</section>
+
+
+<section class="panel">
+
+<h3>⚙️ System Settings</h3>
+
+<div class="switch">
+<input id="maintenance" type="checkbox">
+<label>Maintenance Mode</label>
+</div>
+
+<div>
+<label>Announcement</label>
+<input id="announcement" placeholder="Write announcement...">
+</div>
+
+<br>
+
+<button onclick="saveSystem()">Save System Settings</button>
+
+</section>
+
+
+<section class="panel">
+
+<h3>💸 Recent Withdrawals</h3>
+
+<table>
+
+<thead>
+<tr>
+<th>User</th>
+<th>Amount</th>
+<th>Method</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>No data</td>
+<td>—</td>
+<td>—</td>
+<td><span class="badge">Waiting</span></td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+</main>
+
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+function getSettings(){
+
+return JSON.parse(
+localStorage.getItem("anr_admin_settings") ||
+`{
+"tapReward":1,
+"maxEnergy":1000,
+"energyCost":1,
+"recovery":1,
+"monetag":true,
+"gigapub":true,
+"adReward":50,
+"adLimit":20,
+"ref1":5,
+"ref2":2,
+"ref3":1,
+"refBonus":100,
+"minWithdraw":1000,
+"withdrawFee":0,
+"bnb":true,
+"ton":true,
+"usdt":true,
+"binance":true,
+"maintenance":false,
+"announcement":""
+}`
+);
+
+}
+
+function save(data){
+
+localStorage.setItem(
+"anr_admin_settings",
+JSON.stringify(data)
+);
+
+toast("Settings saved successfully!");
+
+}
+
+function saveMining(){
+
+let s=getSettings();
+
+s.tapReward=Number(
+document.getElementById("tapReward").value
+);
+
+s.maxEnergy=Number(
+document.getElementById("maxEnergy").value
+);
+
+s.energyCost=Number(
+document.getElementById("energyCost").value
+);
+
+s.recovery=Number(
+document.getElementById("recovery").value
+);
+
+save(s);
+
+}
+
+function saveAds(){
+
+let s=getSettings();
+
+s.monetag=document.getElementById("monetag").checked;
+s.gigapub=document.getElementById("gigapub").checked;
+
+s.monetagZone=document.getElementById("monetagZone").value;
+s.gigapubZone=document.getElementById("gigapubZone").value;
+
+s.adReward=Number(
+document.getElementById("adReward").value
+);
+
+s.adLimit=Number(
+document.getElementById("adLimit").value
+);
+
+save(s);
+
+}
+
+function saveReferral(){
+
+let s=getSettings();
+
+s.ref1=Number(document.getElementById("ref1").value);
+s.ref2=Number(document.getElementById("ref2").value);
+s.ref3=Number(document.getElementById("ref3").value);
+s.refBonus=Number(document.getElementById("refBonus").value);
+
+save(s);
+
+}
+
+function saveWithdraw(){
+
+let s=getSettings();
+
+s.minWithdraw=Number(
+document.getElementById("minWithdraw").value
+);
+
+s.withdrawFee=Number(
+document.getElementById("withdrawFee").value
+);
+
+s.bnb=document.getElementById("bnb").checked;
+s.ton=document.getElementById("ton").checked;
+s.usdt=document.getElementById("usdt").checked;
+s.binance=document.getElementById("binance").checked;
+
+save(s);
+
+}
+
+function saveSystem(){
+
+let s=getSettings();
+
+s.maintenance=
+document.getElementById("maintenance").checked;
+
+s.announcement=
+document.getElementById("announcement").value;
+
+save(s);
+
+}
+
+function load(){
+
+let s=getSettings();
+
+document.getElementById("tapReward").value=s.tapReward;
+document.getElementById("maxEnergy").value=s.maxEnergy;
+document.getElementById("energyCost").value=s.energyCost;
+document.getElementById("recovery").value=s.recovery;
+
+document.getElementById("monetag").checked=s.monetag;
+document.getElementById("gigapub").checked=s.gigapub;
+
+document.getElementById("monetagZone").value=s.monetagZone||"";
+document.getElementById("gigapubZone").value=s.gigapubZone||"";
+
+document.getElementById("adReward").value=s.adReward;
+document.getElementById("adLimit").value=s.adLimit;
+
+document.getElementById("ref1").value=s.ref1;
+document.getElementById("ref2").value=s.ref2;
+document.getElementById("ref3").value=s.ref3;
+document.getElementById("refBonus").value=s.refBonus;
+
+document.getElementById("minWithdraw").value=s.minWithdraw;
+document.getElementById("withdrawFee").value=s.withdrawFee;
+
+document.getElementById("bnb").checked=s.bnb;
+document.getElementById("ton").checked=s.ton;
+document.getElementById("usdt").checked=s.usdt;
+document.getElementById("binance").checked=s.binance;
+
+document.getElementById("maintenance").checked=s.maintenance;
+document.getElementById("announcement").value=s.announcement||"";
+
+}
+
+function toast(text){
+
+let t=document.getElementById("toast");
+
+t.innerText=text;
+t.style.display="block";
+
+setTimeout(()=>{
+t.style.display="none";
+},1800);
+
+}
+
+load();
+
+</script>
+
+</body>
+  </html>
